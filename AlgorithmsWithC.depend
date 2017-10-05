@@ -1,0 +1,53 @@
+# depslib dependency file v1.0
+1505807071 source:e:\developer\cb\algorithmswithc\clist\clist.c
+	<stdlib.h>
+	<string.h>
+	"clist.h"
+
+1505807217 e:\developer\cb\algorithmswithc\clist\clist.h
+	<stdlib.h>
+
+1505892560 source:e:\developer\cb\algorithmswithc\dlist\dlist.c
+	<stdlib.h>
+	<string.h>
+	"dlist.h"
+
+1505892456 e:\developer\cb\algorithmswithc\dlist\dlist.h
+	<stdlib.h>
+
+1505805266 source:e:\developer\cb\algorithmswithc\list\list.c
+	<stdlib.h>
+	<string.h>
+	"list.h"
+
+1505790657 e:\developer\cb\algorithmswithc\list\list.h
+	<stdlib.h>
+
+1506391149 source:e:\developer\cb\algorithmswithc\main.c
+	<stdio.h>
+	<stdlib.h>
+	"clist/clist.h"
+	"dlist/dlist.h"
+	"list/list.h"
+	"stack/stack.h"
+	"main.h"
+
+1506390357 e:\developer\cb\algorithmswithc\stack\stack.h
+
+1505891045 e:\developer\cb\algorithmswithc\main.h
+	"list/list.h"
+	"dlist/dlist.h"
+	"clist/clist.h"
+	"stack/stack.h"
+
+1506409135 source:e:\developer\cb\algorithmswithc\stack\stack.c
+	<stdlib.h>
+	"stack.h"
+
+1506409381 source:e:\developer\cb\algorithmswithc\queue\queue.c
+	<stdlib.h>
+	"queue.h"
+
+1506408596 e:\developer\cb\algorithmswithc\queue\queue.h
+	<stdlib.h>
+
