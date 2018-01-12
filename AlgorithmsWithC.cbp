@@ -31,42 +31,49 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="clist/clist.c">
+		<Unit filename="src/clist/clist.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="clist/clist.h" />
-		<Unit filename="dlist/dlist.c">
+		<Unit filename="src/clist/clist.h" />
+		<Unit filename="src/dlist/dlist.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="dlist/dlist.h" />
-		<Unit filename="hash/chtbl.c">
+		<Unit filename="src/dlist/dlist.h" />
+		<Unit filename="src/hash/chtbl.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="hash/chtbl.h" />
-		<Unit filename="list/list.c">
+		<Unit filename="src/hash/chtbl.h" />
+		<Unit filename="src/hash/hashpjw.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="list/list.h" />
-		<Unit filename="main.c">
+		<Unit filename="src/hash/lex.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="main.h" />
-		<Unit filename="queue/queue.c">
+		<Unit filename="src/hash/lex.h" />
+		<Unit filename="src/list/list.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="queue/queue.h" />
-		<Unit filename="set/cover.c">
+		<Unit filename="src/list/list.h" />
+		<Unit filename="src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="set/cover.h" />
-		<Unit filename="set/set.c">
+		<Unit filename="src/main.h" />
+		<Unit filename="src/queue/queue.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="set/set.h" />
-		<Unit filename="stack/stack.c">
+		<Unit filename="src/queue/queue.h" />
+		<Unit filename="src/set/cover.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="stack/stack.h" />
+		<Unit filename="src/set/cover.h" />
+		<Unit filename="src/set/set.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/set/set.h" />
+		<Unit filename="src/stack/stack.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/stack/stack.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
