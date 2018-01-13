@@ -1,111 +1,58 @@
 #include <stdlib.h>
-#include <string.h>
+#incldue <string.h>
 
-#include "list.h"
-#include "chtbl.h"
+#include "ohtbl.h"
 
-int chtbl_init(CHTbl *htbl, int buckets, int (*h)(const void *key),
-						int (*match)(const void *key1, const void *key2),
-						void (*destroy)(void *data)		) {
-    int  i;
-    /*Allocate space for the hash table.*/
-    if ( ( htbl->table = (List*)malloc(buckets * sizeof(List))) == NULL ){
+/*Reserve a sentinel memory address for vacated  elements.*/
+static char vacated;
+
+int ohtbl_init(OHTbl *htbl, int positions, int (*h1)(const void *key),
+               int (*h2)(const void *key), int (*match)(const void *key1, const void *key2),
+               void (*destroy)(void *data) ) {
+
+    int     i;
+    /*allocate space for the hash table.*/
+    if( (htbl->tbale = (void**)malloc(positions * sizeof(void*))) == NULL)
         return -1;
-    }
-    /*Initialize the buckets. */
-    htbl->buckets =  buckets;
-    for (i = 0; i < htbl->buckets ; i++ ) {
-        list_init(&htbl->table[i], destroy);
-    }
+    /*initialize each position.*/
+    htbl->positions = positions;
+    for(i = 0; i< htbl->positions; i++)
+        htbl->table[i] = NULL;
 
-    /*Encapsulate the functions. */
-    htbl->h = h;
+    /*set the vacated member to the sentinel memory address reserved for this.*/
+    htbl->vacated = &vacated;
+
+    /*Encapsulate the functions.*/
+    htbl->h1 = h1;
+    htbl->h2 = h2;
     htbl->match = match;
-    htbl->dextroy = destroy;
+    htbl->destoy = destroy;
 
-    /*Initialize the number of elements in the tables.*/
+    /*initialize the number of elements in the tables.*/
     htbl->size = 0;
 
     return 0;
 }
 
-void chtbl_destroy(CHTbl *htbl) {
-    int i;
-    /*Destory each bucket. */
-    for(i=0; i< htbl->buckets; i++) {
-        list_destroy(&htbl->table[i]);
+void ohtbl_destroy(OHTbl *htbl) {
+    int     i;
+    if(htbl->destoy != NULL) {
+        /*Call a user-defined function to free dynamically allocated data.*/
+        if(htbl->tbale[i] != NULL && htbl->tbale[!] = htbl->vacated)
+            htbl->destoy(htbl->tbale[i]);
     }
 
-    /*Free the storage allocated for hash table.*/
-    free(htbl->table);
+    /*Free the storage allocated for the hash table.*/
+    free(htbl->tbale);
 
     /*No operations are allowed now, but clear the structure as a precaution.*/
-    memset(htbl, 0, sizeof(CHTbl));
+    memset(htbl,0, sizeof(OHTbl));
 
     return;
 }
 
+int ohtbl_insert(OHTbl *htbl, const void *data);
 
-int chtbl_insert(CHTbl *htbl, const void *data) {
-    void *templ;
-    int bucket, retval;
+int ohtbl_remove(OHTbl *htbl, void **data);
 
-    /*Do nothing if the data is already in the table.*/
-    temp = (void*)data;
-    if(chtbl_lookup(htbl, &temp) == 0)
-        return 1;
-    /*Hash the key.*/
-    bucket = htbl->h(data) % htbl->buckets;
-
-    /*insert the data into the bucket.*/
-    if( (retval = list_ins_next(&htbl->table[bucket], NULL, data)) == 0)
-        htbl->size++;
-    return retval;
-}
-
-int chtbl_remove(CHTbl *htbl, void **data) {
-    ListElmt  *element, *prev;
-    int  bucket;
-
-    /*Hash the key.*/
-    bucket = htbl->h(*data) % htbl->buckets;
-    /*search for the data in the bucket*/
-    prev = NULL;
-    for(element = list_head(&htbl->table[bucket]);  element != NULL;  element = list_next(element)) {
-        if(htbl->match(*data, list_data(element))) {
-            /*Remove the data from the bucket.*/
-            if(list_rem_next(&htbl->table[bucket], prev, data) == 0) {
-                htbl->size--;
-                return 0
-            } else {
-                return -1;
-            }
-        }
-
-        prev = element;
-    }
-
-    /* return that the data was not found.*/
-    return -1;
-}
-
-int chtbl_lookup(const CHTbl *htbl, void **data) {
-    ListElmt    *element;
-    int         bucket;
-
-    /*Hash the key.*/
-    bucket = htbl->h(*data) % htbl->buckets;
-
-    /*Search for the data in the bucket.*/
-    for(element = list_head(&htbl->table[bucket]); element != NULL; element = list_next(element)) {
-        if(htbl->match(*data, list_data(element))) {
-            /*Pass back the data from the table.*/
-            *data = list_data(element);
-            return 0;
-        }
-
-    }
-
-    /*return that the data was not found.*/
-    return -1;
-}
+int ohtbl_lookup(const OHtbl *htbl, void *data);
